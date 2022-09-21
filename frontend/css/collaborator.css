@@ -1,0 +1,28 @@
+.collaborator {
+    background-color: #E7E9EC;
+}
+
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 95%;
+    height: 95%;
+    transform: translate(-50%, -50%);
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #dadada;
+}
+
+td, th {
+    border: 1px solid rgb(112, 112, 112);
+    text-align: center;
+}
