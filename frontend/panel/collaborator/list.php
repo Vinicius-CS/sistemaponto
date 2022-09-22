@@ -2,6 +2,7 @@
     $env = parse_ini_file('../../.env');
     session_start();
     if (empty($_SESSION['user'])) header('Location: ' . $env['system_baseurl']);
+    else if ($_SESSION['user']['admin'] == 'false') header('Location: ' . $env['system_baseurl']);
 
     $offset = 0;
     if (isset($_GET['offset'])) {
@@ -42,16 +43,14 @@
 
                 <div class="menu">
                     <a class="item" onclick="location.href='../index.php'">Início</a> |
-                    <?php if($_SESSION['user']['admin'] == 'true') { ?>
-                        <a class="item" onclick="location.href='../report.php'">Relatório</a> |
-                        <div class="dropdown">
-                            <a class="dropbtn item">Colaborador</a>
-                            <div class="dropdown-content">
-                                <a class="subitem" onclick="location.href='./list.php'">Listagem</a>
-                                <a class="subitem" onclick="location.href='./register.php'">Cadastrar</a>
-                            </div>
-                        </div> |
-                    <?php } ?>
+                    <a class="item" onclick="location.href='../report.php'">Relatório</a> |
+                    <div class="dropdown">
+                        <a class="dropbtn item">Colaborador</a>
+                        <div class="dropdown-content">
+                            <a class="subitem" onclick="location.href='./list.php'">Listagem</a>
+                            <a class="subitem" onclick="location.href='./register.php'">Cadastrar</a>
+                        </div>
+                    </div> |
                     <a class="item" onclick="location.href='../../request/logout.php'">Sair</a>
                 </div>
 
