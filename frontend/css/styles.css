@@ -29,6 +29,17 @@ input {
     box-sizing: border-box;
 }
 
+input[type=date] {
+    width: 100%;
+    border: 0.1vw solid #777;
+    border-radius: 0.5vw;
+    padding: 0.25vw 0.5vw;
+    cursor: pointer;
+    line-height: 1.1;
+    margin-top: 0;
+    background-color: #ffffff;
+}
+
 button {
     border-radius: 0.5vw;
     padding: 0.8vw 0.8vw;
@@ -42,6 +53,20 @@ button {
 
 button:hover {
     opacity: 0.8;
+}
+
+select {
+    --select-border: #777;
+    --select-focus: blue;
+    --select-arrow: var(--select-border);
+    width: 100%;
+    border: 0.1vw solid var(--select-border);
+    border-radius: 0.5vw;
+    padding: 0.25vw 0.5vw;
+    cursor: pointer;
+    line-height: 1.1;
+    margin-bottom: 1%;
+    background-color: #ffffff;
 }
 
 .pagination {

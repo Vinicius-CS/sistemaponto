@@ -25,10 +25,10 @@
                 <?php } ?>
 
                 <label for="email"><b>E-mail</b></label>
-                <input type="text" placeholder="Insira seu e-mail" name="email" required>
+                <input type="text" placeholder="Insira seu e-mail" name="email" required/>
 
                 <label for="password"><b>Senha</b></label>
-                <input type="password" placeholder="Insira sua senha" name="password" required>
+                <input type="password" placeholder="Insira sua senha" name="password" required/>
 
                 <div class="grid">
                     <button type="submit">Login</button>
