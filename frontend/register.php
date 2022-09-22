@@ -19,13 +19,13 @@
                 <h1>REGISTRAR-SE</h1>
                 <h3 class="error_message"><?php echo(empty($_SESSION['error_message']) ? '&nbsp;' : $_SESSION['error_message']); ?></h3>
 
-                <label for="name"><b>Nome Completo</b></label>
+                <div><label for="name"><b>Nome Completo</b></label></div>
                 <input type="text" placeholder="Insira seu nome" name="name" required/>
 
-                <label for="email"><b>E-mail</b></label>
+                <div><label for="email"><b>E-mail</b></label></div>
                 <input type="text" placeholder="Insira seu e-mail" name="email" required/>
 
-                <label for="password"><b>Senha</b></label>
+                <div><label for="password"><b>Senha</b></label></div>
                 <input type="password" placeholder="Insira sua senha" name="password" required/>
 
                 <div class="grid">

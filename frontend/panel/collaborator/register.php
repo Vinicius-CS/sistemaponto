@@ -43,13 +43,13 @@
                                     <h3 class="error_message"><?php echo(empty($_SESSION['error_message']) ? '&nbsp;' : $_SESSION['error_message']); unset($_SESSION['error_message']) ?></h3>
                                 <?php } ?>
 
-                                <label for="name"><b>Nome Completo</b></label>
+                                <div><label for="name"><b>Nome Completo</b></label></div>
                                 <input type="text" placeholder="Insira o nome do colaborador" name="name" required/>
 
-                                <label for="email"><b>E-mail</b></label>
+                                <div><label for="email"><b>E-mail</b></label></div>
                                 <input type="text" placeholder="Insira o e-mail do colaborador" name="email" required/>
 
-                                <label for="password"><b>Senha</b></label>
+                                <div><label for="password"><b>Senha</b></label></div>
                                 <input type="password" placeholder="Insira a senha do colaborador" name="password" required/>
 
                                 <button type="submit">Cadastrar</button>
