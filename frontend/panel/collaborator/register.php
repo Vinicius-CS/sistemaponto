@@ -22,7 +22,7 @@
                 <div class="menu">
                     <a class="item" onclick="location.href='../index.php'">Início</a> |
                     <?php if($_SESSION['user']['admin'] == 'true') { ?>
-                        <a class="item" onclick="location.href=''">Relatório</a> |
+                        <a class="item" onclick="location.href='../report.php'">Relatório</a> |
                         <div class="dropdown">
                             <a class="dropbtn item">Colaborador</a>
                             <div class="dropdown-content">
@@ -31,12 +31,12 @@
                             </div>
                         </div> |
                     <?php } ?>
-                    <a class="item" onclick="location.href='../request/logout.php'">Sair</a>
+                    <a class="item" onclick="location.href='../../request/logout.php'">Sair</a>
                 </div>
 
                 <div class="content">
                     <div >
-                        <form action="../../request/collaborator.php" method="post">
+                        <form action="../../request/register_collaborator.php" method="post">
                             <div>
                                 <h1>CADASTRAR COLABORADOR</h1>
                                 <?php if (!empty($_SESSION['success_message'])) { ?>
@@ -46,13 +46,13 @@
                                 <?php } ?>
 
                                 <label for="name"><b>Nome Completo</b></label>
-                                <input type="text" placeholder="Insira o nome do colaborador" name="name" required>
+                                <input type="text" placeholder="Insira o nome do colaborador" name="name" required/>
 
                                 <label for="email"><b>E-mail</b></label>
-                                <input type="text" placeholder="Insira o e-mail do colaborador" name="email" required>
+                                <input type="text" placeholder="Insira o e-mail do colaborador" name="email" required/>
 
                                 <label for="password"><b>Senha</b></label>
-                                <input type="password" placeholder="Insira a senha do colaborador" name="password" required>
+                                <input type="password" placeholder="Insira a senha do colaborador" name="password" required/>
 
                                 <button type="submit">Cadastrar</button>
                             </div>

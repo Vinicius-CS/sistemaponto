@@ -3,22 +3,22 @@
     session_start();
     if (empty($_SESSION['user'])) header('Location: ' . $env['system_baseurl']);
 
-    $offset = 0;
-    if (isset($_GET['offset'])) {
-        $offset = $_GET['offset'];
+    if (empty($_GET['offset'])) {
+        $_GET['offset'] = 0;
     }
 
     $curl = curl_init();
 
     curl_setopt_array($curl, array(
-        CURLOPT_URL => $env['api_baseurl'] . 'timesheet.php?offset=' . $offset . '&user_id=' . $_SESSION['user']['id'],
+        CURLOPT_URL => $env['api_baseurl'] . 'timesheet.php?offset=' . $_GET['offset'],
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
         CURLOPT_TIMEOUT => 0,
         CURLOPT_FOLLOWLOCATION => true,
         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-        CURLOPT_CUSTOMREQUEST => 'GET'
+        CURLOPT_CUSTOMREQUEST => 'POST',
+        CURLOPT_POSTFIELDS => array('user_id' => $_SESSION['user']['id'], 'type' => 'list')
     ));
 
     $response = json_decode(curl_exec($curl), true);
@@ -42,7 +42,7 @@
                 <div class="menu">
                     <a class="item" onclick="location.href='../index.php'">Início</a> |
                     <?php if($_SESSION['user']['admin'] == 'true') { ?>
-                        <a class="item" onclick="location.href=''">Relatório</a> |
+                        <a class="item" onclick="location.href='./report.php'">Relatório</a> |
                         <div class="dropdown">
                             <a class="dropbtn item">Colaborador</a>
                             <div class="dropdown-content">
@@ -67,24 +67,22 @@
                             <th>Saída</th>
                         </tr>
                         <?php
-                            if (!empty($_SESSION['timesheet'])) {
-                                for ($i=0; $i < 5; $i++) { 
-                                    echo "
-                                        <tr>
-                                            <td>".(empty($_SESSION['timesheet'][$i]['start']) ? '&nbsp;' : date_format(date_create($_SESSION['timesheet'][$i]['start']), 'd/m/Y H:i:s'))."</td>
-                                            <td>".(empty($_SESSION['timesheet'][$i]['start']) ? '&nbsp;' : (empty($_SESSION['timesheet'][$i]['end']) ? 'PENDENTE' : date_format(date_create($_SESSION['timesheet'][$i]['end']), 'd/m/Y H:i:s')))."</td>
-                                        </tr>
-                                    ";
-                                }
+                            for ($i=0; $i < 5; $i++) { 
+                                echo "
+                                    <tr>
+                                        <td>".(empty($_SESSION['timesheet'][$i]['start']) ? '&nbsp;' : date_format(date_create($_SESSION['timesheet'][$i]['start']), 'd/m/Y H:i:s'))."</td>
+                                        <td>".(empty($_SESSION['timesheet'][$i]['start']) ? '&nbsp;' : (empty($_SESSION['timesheet'][$i]['end']) ? 'PENDENTE' : date_format(date_create($_SESSION['timesheet'][$i]['end']), 'd/m/Y H:i:s')))."</td>
+                                    </tr>
+                                ";
                             }
                         ?>
                         <tr>
-                            <?php if ($offset == 0) {?>
+                            <?php if ($_GET['offset'] == 0) {?>
                                 <th class="icon disabled">&laquo; <a class="button_page disabled">Anterior</a></th>
                             <?php } else { ?>
                                 <th>&laquo; <a class="button_page" href="?offset=<?php echo $i - 5 ?>">Anterior</a></th>
                             <?php }
-                            if (count($_SESSION['timesheet']) < 6) {?>
+                            if (!empty($_SESSION['timesheet']) && count($_SESSION['timesheet']) < 6) {?>
                                 <th class="icon disabled"><a class="button_page disabled">Próximo</a> &raquo;</th>
                             <?php } else { ?>
                                 <th><a class="button_page" href="?offset=<?php echo $i ?>">Próximo</a> &raquo;</th>
