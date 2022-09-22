@@ -13,7 +13,7 @@
         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
         CURLOPT_CUSTOMREQUEST => 'POST',
         CURLOPT_POSTFIELDS => array('name' => $_POST['name'], 'email' => $_POST['email'], 'password' => $_POST['password']),
-      ));
+    ));
 
     $response = json_decode(curl_exec($curl), true);
     $info = curl_getinfo($curl);
