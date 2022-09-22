@@ -1,7 +1,7 @@
 <?php
     $env = parse_ini_file('./.env');
     session_start();
-    if (!empty($_SESSION['userId'])) header('Location: ' . $env['system_baseurl'] . 'panel');
+    if (!empty($_SESSION['user'])) header('Location: ' . $env['system_baseurl'] . 'panel');
     if (!empty($_SESSION['success_message']) || !empty($_SESSION['error_message'])) session_destroy();
 ?>
 
