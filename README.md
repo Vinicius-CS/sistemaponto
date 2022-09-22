@@ -3,6 +3,7 @@ Sistema de ponto com cadastro de colaboradores e registro de entrada/saída em P
 
 ## Requisitos
 
+ - MariaDB 10.4.24
  - PHP 8.1.6^
  - [Xampp 8.1.6](https://www.apachefriends.org/pt_br/download.html)
 
